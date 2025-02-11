@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'user' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'librarian' => [
+            'driver' => 'jwt',
+            'provider' => 'librarians',
+        ]
     ],
 
     /*
@@ -62,7 +70,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
+        ],
+        'librarians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class ,
         ],
 
         // 'users' => [
