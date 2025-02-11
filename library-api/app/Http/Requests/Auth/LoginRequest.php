@@ -14,15 +14,15 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function bodyParameters(): array
-    {
-        return [
-            'email' => [
-                'description' => 'Логин пользователя системы.',
-            ],
-            'password' => [
-                'description' => 'Пароль пользователя.',
-            ],
-        ];
-    }
+//    public function bodyParameters(): array
+//    {
+//        return [
+//            'email' => [
+//                'description' => 'Логин пользователя системы.',
+//            ],
+//            'password' => [
+//                'description' => 'Пароль пользователя.',
+//            ],
+//        ];
+//    }
 }

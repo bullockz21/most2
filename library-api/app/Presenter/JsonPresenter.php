@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace App\Presenter;
 
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

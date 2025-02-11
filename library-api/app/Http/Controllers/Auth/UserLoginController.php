@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Modules\Auth\DTO\UserLoginRequestDTO;
 use App\Modules\Auth\UseCase\UserLoginUseCase;
-use App\Presenters\JsonPresenter;
-use Knuckles\Scribe\Attributes\Group;
-use Knuckles\Scribe\Attributes\Response;
+use App\Presenter\JsonPresenter;
+//use Knuckles\Scribe\Attributes\Group;
+//use Knuckles\Scribe\Attributes\Response;
 
-#[Group("Authentication")]
+//#[Group("Authentication")]
 class UserLoginController extends Controller
 {
     public function __construct(
@@ -19,7 +19,7 @@ class UserLoginController extends Controller
     )
     {}
 
-    #[Response(['token' => "TOKEN"])]
+  //  #[Response(['token' => "TOKEN"])]
     public function __invoke(LoginRequest $request)
     {
         // Формируем DTO, используя email и пароль из запроса

@@ -1,41 +1,27 @@
 <?php
-
+// app/Modules/Auth/Repository/UserLoginRepository.php
 namespace App\Modules\Auth\Repository;
 
 use App\Models\User;
 use App\Modules\Auth\DTO\UserLoginRequestDTO;
 use App\Modules\Auth\Repository\Exceptions\PasswordDoesntMatchException;
-//use App\Modules\Auth\Repository\Exceptions\PasswordDoesntMatchExcetion;
-use App\Modules\Auth\Repository\Exceptions\UserDontExistsException;
-use Illuminate\Support\Facades\Hash;
+use App\Modules\Auth\Repository\Exceptions\UserNotFoundException;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserLoginRepository
 {
-    public function __construct(
-        private ?User $user = null,
-    )
+    public function login(UserLoginRequestDTO $dto): array
     {
-    }
-
-    public function make(UserLoginRequestDTO $dto): array
-    {
-        // Поиск пользователя по email
-        $this->user = User::where('email', '=', $dto->email)->first();
-
-        if (!$this->user) {
-            throw new UserDontExistsException();
+        $user = User::where('email', $dto->email)->first();
+        if (!$user) {
+            throw new UserNotFoundException('Пользователь не найден');
         }
-
-        // Проверка соответствия введённого пароля и хеша, сохранённого в базе
-        if (!Hash::check($dto->password, $this->user->password)) {
-            throw new PasswordDoesntMatchException();
+        if (!Hash::check($dto->password, $user->password)) {
+            throw new PasswordDoesntMatchException('Пароль не совпадает');
         }
-
-        // Создание токена (например, используя Laravel Sanctum)
-        return [
-            'token' => JWTAuth::fromUser($this->user),
-        ];
+        // Генерируем JWT-токен для пользователя
+        $token = JWTAuth::fromUser($user);
+        return ['token' => $token];
     }
 }
