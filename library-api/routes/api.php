@@ -4,14 +4,11 @@ use Illuminate\Support\Facades\Route;
 // Маршруты для пользователей
 
 
-Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
-    Route::get('/docs', function () {
-        return redirect('/docs/index.html');
-    })->withoutMiddleware(['auth:sanctum']);
+use App\Http\Controllers\Auth\UserLoginController;
 
-    Route::prefix('auth')->withoutMiddleware(['auth:sanctum'])->group(function () {
-        Route::post('/login', LoginController::class);
-    });
+Route::prefix('user')->group(function () {
+    // Роут для авторизации пользователей (без middleware, т.к. пользователь ещё не аутентифицирован)
+    Route::post('/login', UserLoginController::class);
 });
 
 //старый вариант chatgpt
