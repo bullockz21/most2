@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Requests\Auth;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -9,7 +9,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => 'required|string',
+            'email' => 'required|string',
             'password' => 'required|string|min:8',
         ];
     }
@@ -17,7 +17,7 @@ class LoginRequest extends FormRequest
     public function bodyParameters(): array
     {
         return [
-            'login' => [
+            'email' => [
                 'description' => 'Логин пользователя системы.',
             ],
             'password' => [
