@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 class Librarian extends Model implements JWTSubject
 {
-    protected $connection = 'library_api_db';
+    //protected $connection = 'library_api_db';
 
     protected $table = 'librarians';
     protected $fillable = ['name', 'email', 'password'];
