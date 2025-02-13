@@ -7,10 +7,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Modules\Auth\DTO\UserRegisterRequestDTO;
 use App\Modules\Auth\UseCase\UserRegisterUseCase;
 use App\Presenters\JsonPresenter;
-use Knuckles\Scribe\Attributes\Group;
-use Knuckles\Scribe\Attributes\Response;
 
-#[Group("Authentication")]
 class UserRegisterController extends Controller
 {
     public function __construct(
@@ -18,8 +15,7 @@ class UserRegisterController extends Controller
         private JsonPresenter $presenter,
     ) {}
 
-    #[Response(['user' => "User Data", 'token' => "JWT_TOKEN"])]
-    public function register(RegisterRequest $request)
+    public function __invoke(RegisterRequest $request)
     {
         $dto = new UserRegisterRequestDTO(
             $request->name,
