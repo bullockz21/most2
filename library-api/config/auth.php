@@ -74,7 +74,7 @@ return [
         ],
         'librarians' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class ,
+            'model' => App\Models\Librarian::class ,
         ],
 
         // 'users' => [
