@@ -12,6 +12,9 @@ use App\Http\Controllers\Book\LibraryController;
 use App\Http\Controllers\Book\LibraryBorrowController;
 use App\Http\Controllers\Book\LibraryReturnController;
 
+//crud
+use App\Http\Controllers\CRUD\BookController;
+
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
 use App\Http\Controllers\LibrarianAuth\LibrarianLogoutController as PostLibrarianLogoutController;
@@ -42,6 +45,11 @@ Route::prefix('v1')->group(function () {
         Route::post('/books/{book}/return', LibraryReturnController::class);
     });
 
+
+    Route::middleware('jwt.auth')->prefix('librarian')->group(function () {
+        // POST /api/v1/librarian/books – создание книги
+        Route::post('/books', BookController::class);
+    });
 //    Route::middleware('jwt.auth')->group(function () {
 //
 //        // Маршруты для пользователей: просмотр книг, брать и сдавать книги
