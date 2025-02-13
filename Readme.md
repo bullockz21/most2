@@ -70,7 +70,7 @@
 ## 7. Деплой
 1. Склонировать репозиторий Git Clone ...
 2. Остановить Postgresql `sudo systemctl stop postgresql`
-3. Развернуть контейнеры Docker (`docker-compose up -d`)
+3. Развернуть контейнеры Docker (`docker-compose up -d db`)
 4. настроить .env файл(использовать .env.example). для подключения к бд и pgadmin
 5. также настраиваем .env файл в корне проекта.
 6. Выполнить миграции (`php artisan migrate`)
