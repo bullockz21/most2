@@ -1,42 +1,37 @@
 <?php
 
-use App\Http\Controllers\Auth\UserLogoutController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\UserLoginController;
-use App\Http\Controllers\Auth\UserRegisterController;
+
+use App\Http\Controllers\Auth\UserRegisterController as PostUSerRegisterController;
+use App\Http\Controllers\Auth\UserLoginController as PostUserLoginController;
+use App\Http\Controllers\Auth\UserLogoutController as PostUserLogoutController;
+
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibraryController;
-use App\Http\Controllers\Auth\LibrarianLoginController;
-use App\Http\Controllers\Auth\LibrarianLogoutController;
+
+use App\Http\Controllers\Auth\LibrarianLoginController as PostLibrarianLoginController; ;
+use App\Http\Controllers\Auth\LibrarianLogoutController as PostLibrarianLogoutController;
 
 Route::prefix('v1')->group(function () {
 
-    // Маршрут для документации (публичный)
     Route::get('/docs', function () {
         return redirect('/docs/index.html');
     })->withoutMiddleware(['jwt.auth']);
 
-    /**
-     * Публичные маршруты аутентификации для пользователей
-     */
+
     Route::prefix('auth')->group(function () {
-        Route::post('/register', UserRegisterController::class);
-        Route::post('/login', UserLoginController::class);
-        Route::post('/logout', UserLogoutController::class);
+        Route::post('/register', PostUserRegisterController::class);
+        Route::post('/login', PostUserLoginController::class);
+        Route::post('/logout', PostUserLogoutController::class);
     });
 
-    /**
-     * Публичные маршруты аутентификации для библиотекарей
-     */
     Route::prefix('librarian/auth')->group(function () {
-        Route::post('/login', LibrarianLoginController::class);
-        Route::post('/logout', LibrarianLogoutController::class);
+        Route::post('/login', PostLibrarianLoginController::class);
+        Route::post('/logout', PostLibrarianLogoutController::class);
 
     });
 
-    /**
-     * Защищённые маршруты – требуют валидного JWT
-     */
     Route::middleware('jwt.auth')->group(function () {
 
         // Маршруты для пользователей: просмотр книг, брать и сдавать книги
