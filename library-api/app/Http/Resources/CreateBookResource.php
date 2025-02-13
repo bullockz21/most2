@@ -3,7 +3,7 @@
 namespace app\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-class CreateBookResource
+class CreateBookResource extends JsonResource
 {
     public function toArray($request)
     {
