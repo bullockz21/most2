@@ -7,8 +7,8 @@ use App\Http\Controllers\UserAuth\UserRegisterController as PostUSerRegisterCont
 use App\Http\Controllers\UserAuth\UserLoginController as PostUserLoginController;
 use App\Http\Controllers\UserAuth\UserLogoutController as PostUserLogoutController;
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\LibraryController;
+//use App\Http\Controllers\BookController;
+use App\Http\Controllers\Book\LibraryController;
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
 use App\Http\Controllers\LibrarianAuth\LibrarianLogoutController as PostLibrarianLogoutController;
@@ -32,23 +32,28 @@ Route::prefix('v1')->group(function () {
 
     });
 
-    Route::middleware('jwt.auth')->group(function () {
-
-        // Маршруты для пользователей: просмотр книг, брать и сдавать книги
-        Route::prefix('user')->group(function () {
-            Route::get('/books', [LibraryController::class, 'index']);
-            Route::post('/books/{book}/borrow', [LibraryController::class, 'borrow']);
-            Route::post('/books/{book}/return', [LibraryController::class, 'returnBook']);
-        });
-
-        // Маршруты для библиотекарей: CRUD операций с книгами
-        Route::prefix('librarian')->group(function () {
-            Route::post('/books', [BookController::class, 'store']);
-            Route::get('/books', [BookController::class, 'index']);
-            Route::put('/books/{book}', [BookController::class, 'update']);
-            Route::delete('/books/{book}', [BookController::class, 'destroy']);
-        });
-
-        // Можно добавить маршрут выхода (logout) здесь, если нужно
+    Route::middleware('jwt.auth')->prefix('user')->group(function () {
+        // GET /api/v1/user/books – просмотр доступных книг
+        Route::get('/books', LibraryController::class);
     });
+
+//    Route::middleware('jwt.auth')->group(function () {
+//
+//        // Маршруты для пользователей: просмотр книг, брать и сдавать книги
+//        Route::prefix('user')->group(function () {
+//            Route::get('/books', [LibraryController::class, 'index']);
+//            Route::post('/books/{book}/borrow', [LibraryController::class, 'borrow']);
+//            Route::post('/books/{book}/return', [LibraryController::class, 'returnBook']);
+//        });
+//
+//        // Маршруты для библиотекарей: CRUD операций с книгами
+//        Route::prefix('librarian')->group(function () {
+//            Route::post('/books', [BookController::class, 'store']);
+//            Route::get('/books', [BookController::class, 'index']);
+//            Route::put('/books/{book}', [BookController::class, 'update']);
+//            Route::delete('/books/{book}', [BookController::class, 'destroy']);
+//        });
+//
+//        // Можно добавить маршрут выхода (logout) здесь, если нужно
+//    });
 });

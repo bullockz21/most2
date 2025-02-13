@@ -9,7 +9,7 @@ use App\Models\BorrowedBook;
 
 class Book extends Model
 {
-    protected $connection = 'library_api_db';
+    //protected $connection = 'library_api_db';
     protected $table = 'books';
     protected $fillable = [
         'title',
