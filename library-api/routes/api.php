@@ -15,6 +15,7 @@ use App\Http\Controllers\Book\LibraryReturnController;
 //crud
 use App\Http\Controllers\CRUD\BookController;
 use App\Http\Controllers\CRUD\UpdateBookController;
+use App\Http\Controllers\CRUD\LibraryAllBooksController;
 
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
@@ -49,8 +50,10 @@ Route::prefix('v1')->group(function () {
 
     Route::middleware('jwt.auth')->prefix('librarian')->group(function () {
         // POST /api/v1/librarian/books – создание книги
-        Route::post('/books', BookController::class);
-        Route::put('/books/{book}', UpdateBookController::class);
+        Route::post('/books', BookController::class);//создание книги
+        Route::put('/books/{book}', UpdateBookController::class);//обновление книги
+        Route::get('/books', LibraryAllBooksController::class);
+
 
     });
 //    Route::middleware('jwt.auth')->group(function () {
