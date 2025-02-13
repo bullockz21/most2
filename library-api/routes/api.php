@@ -3,15 +3,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Auth\UserRegisterController as PostUSerRegisterController;
-use App\Http\Controllers\Auth\UserLoginController as PostUserLoginController;
-use App\Http\Controllers\Auth\UserLogoutController as PostUserLogoutController;
+use App\Http\Controllers\UserAuth\UserRegisterController as PostUSerRegisterController;
+use App\Http\Controllers\UserAuth\UserLoginController as PostUserLoginController;
+use App\Http\Controllers\UserAuth\UserLogoutController as PostUserLogoutController;
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibraryController;
 
-use App\Http\Controllers\Auth\LibrarianLoginController as PostLibrarianLoginController; ;
-use App\Http\Controllers\Auth\LibrarianLogoutController as PostLibrarianLogoutController;
+use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
+use App\Http\Controllers\LibrarianAuth\LibrarianLogoutController as PostLibrarianLogoutController;
 
 Route::prefix('v1')->group(function () {
 

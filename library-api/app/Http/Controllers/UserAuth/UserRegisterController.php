@@ -1,6 +1,6 @@
 <?php
 // app/Http/Controllers/Auth/UserRegisterController.php
-namespace App\Http\Controllers\Auth;
+namespace app\Http\Controllers\UserAuth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;

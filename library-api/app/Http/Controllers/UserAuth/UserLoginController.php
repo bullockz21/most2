@@ -1,33 +1,32 @@
 <?php
-
-namespace App\Http\Controllers\Auth;
+// app/Http/Controllers/Auth/UserLoginController.php
+namespace App\Http\Controllers\UserAuth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest; // Можно использовать общий LoginRequest, если структура одинакова
-use App\Modules\Auth\DTO\LibrarianLoginRequestDTO;
-use App\Modules\Auth\UseCase\LibrarianLoginUseCase;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Modules\Auth\DTO\UserLoginRequestDTO;
+use App\Modules\Auth\UseCase\UserLoginUseCase;
 use App\Presenters\JsonPresenter;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\Response;
 
 #[Group("Authentication")]
-class LibrarianLoginController extends Controller
+class UserLoginController extends Controller
 {
     public function __construct(
-        private LibrarianLoginUseCase $useCase,
+        private UserLoginUseCase $useCase,
         private JsonPresenter $presenter,
     ) {}
 
     #[Response(['token' => "JWT_TOKEN"])]
     public function __invoke(LoginRequest $request)
     {
-        $dto = new LibrarianLoginRequestDTO(
+        $dto = new UserLoginRequestDTO(
             $request->email,
             $request->password,
         );
 
         $response = $this->useCase->execute($dto);
-
         return $this->presenter->present($response);
     }
 }

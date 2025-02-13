@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace app\Http\Controllers\LibrarianAuth;
 
 use App\Http\Controllers\Controller;
+use App\Presenters\JsonPresenter;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Presenters\JsonPresenter;
 
 class LibrarianLogoutController extends Controller
 {
