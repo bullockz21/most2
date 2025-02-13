@@ -8,7 +8,7 @@ use App\Models\User;
 
 class BorrowedBook extends Model
 {
-    protected $connection = 'library_api_db';
+   // protected $connection = 'library_api_db';
 
     protected $table = 'borrowed_books';
     protected $fillable = [

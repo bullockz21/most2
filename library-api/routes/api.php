@@ -9,6 +9,7 @@ use App\Http\Controllers\UserAuth\UserLogoutController as PostUserLogoutControll
 
 //use App\Http\Controllers\BookController;
 use App\Http\Controllers\Book\LibraryController;
+use App\Http\Controllers\Book\LibraryBorrowController;
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
 use App\Http\Controllers\LibrarianAuth\LibrarianLogoutController as PostLibrarianLogoutController;
@@ -35,6 +36,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware('jwt.auth')->prefix('user')->group(function () {
         // GET /api/v1/user/books – просмотр доступных книг
         Route::get('/books', LibraryController::class);
+        Route::post('/books/{book}/borrow', LibraryBorrowController::class);
     });
 
 //    Route::middleware('jwt.auth')->group(function () {
