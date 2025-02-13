@@ -10,6 +10,8 @@ use App\Http\Controllers\UserAuth\UserLogoutController as PostUserLogoutControll
 //use App\Http\Controllers\BookController;
 use App\Http\Controllers\Book\LibraryController;
 use App\Http\Controllers\Book\LibraryBorrowController;
+use App\Http\Controllers\Book\LibraryReturnController;
+
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
 use App\Http\Controllers\LibrarianAuth\LibrarianLogoutController as PostLibrarianLogoutController;
@@ -37,6 +39,7 @@ Route::prefix('v1')->group(function () {
         // GET /api/v1/user/books – просмотр доступных книг
         Route::get('/books', LibraryController::class);
         Route::post('/books/{book}/borrow', LibraryBorrowController::class);
+        Route::post('/books/{book}/return', LibraryReturnController::class);
     });
 
 //    Route::middleware('jwt.auth')->group(function () {
@@ -59,3 +62,14 @@ Route::prefix('v1')->group(function () {
 //        // Можно добавить маршрут выхода (logout) здесь, если нужно
 //    });
 });
+//{
+//    "email": "user@example.com",
+//  "password": "ваш_пароль"
+//}
+//{
+//    "name": "Иван Иванов",
+//  "email": "ivan@example.com",
+//  "password": "yourpassword",
+//  "password_confirmation": "yourpassword"
+//}
+
