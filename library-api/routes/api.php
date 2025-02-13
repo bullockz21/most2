@@ -16,6 +16,7 @@ use App\Http\Controllers\Book\LibraryReturnController;
 use App\Http\Controllers\CRUD\BookController;
 use App\Http\Controllers\CRUD\UpdateBookController;
 use App\Http\Controllers\CRUD\LibraryAllBooksController;
+use App\Http\Controllers\CRUD\DeleteBookController;
 
 
 use App\Http\Controllers\LibrarianAuth\LibrarianLoginController as PostLibrarianLoginController; ;
@@ -45,6 +46,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/books', LibraryController::class);
         Route::post('/books/{book}/borrow', LibraryBorrowController::class);
         Route::post('/books/{book}/return', LibraryReturnController::class);
+
     });
 
 
@@ -53,7 +55,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/books', BookController::class);//создание книги
         Route::put('/books/{book}', UpdateBookController::class);//обновление книги
         Route::get('/books', LibraryAllBooksController::class);
-
+        Route::delete('/books/{book}', DeleteBookController::class);
 
     });
 //    Route::middleware('jwt.auth')->group(function () {
