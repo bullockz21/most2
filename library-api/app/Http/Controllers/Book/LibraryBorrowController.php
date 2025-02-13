@@ -17,12 +17,11 @@ class LibraryBorrowController extends Controller
         $this->borrowBookUseCase = $useCase;
     }
 
-    // Этот контроллер invokable: вызывается методом __invoke
     public function __invoke(Request $request, $bookId)
     {
-        // Получаем идентификатор текущего пользователя через Auth
+
         $userId = Auth::id();
-        // Создаем DTO с данными
+
         $dto = new BorrowBookRequestDTO((int)$bookId, $userId);
 
         try {

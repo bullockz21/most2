@@ -7,7 +7,6 @@ class CreateBookRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // Если маршрут защищён JWT, то здесь можно вернуть true
         return true;
     }
 

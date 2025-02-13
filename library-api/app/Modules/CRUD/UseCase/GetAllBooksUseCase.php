@@ -11,12 +11,6 @@ class GetAllBooksUseCase
         private GetAllBooksRepository $repository
     ) {}
 
-    /**
-     * Выполняет бизнес-логику получения всех книг.
-     *
-     * @param GetAllBooksRequestDTO $dto
-     * @return Collection
-     */
     public function execute(GetAllBooksRequestDTO $dto): Collection
     {
         return $this->repository->getAll();

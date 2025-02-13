@@ -1,5 +1,4 @@
 <?php
-// app/Modules/Auth/Repository/UserLoginRepository.php
 namespace App\Modules\Auth\Repository;
 
 use App\Models\User;
@@ -20,7 +19,7 @@ class UserLoginRepository
         if (!Hash::check($dto->password, $user->password)) {
             throw new PasswordDoesntMatchException('Пароль не совпадает');
         }
-        // Генерируем JWT-токен для пользователя
+
         $token = JWTAuth::fromUser($user);
         return ['token' => $token];
     }

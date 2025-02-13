@@ -19,18 +19,18 @@ class LibraryReturnController extends Controller
         $this->returnBookUseCase = $useCase;
     }
 
-    // Invokable контроллер для возврата книги: POST /api/v1/user/books/{book}/return
+
     public function __invoke(ReturnBookRequest $request, $book)
     {
-        // Получаем ID аутентифицированного пользователя
+
         $userId = Auth::id();
 
-        // Создаем DTO для возврата книги (приводим book к целому числу)
+
         $dto = new ReturnBookRequestDTO((int)$book, $userId);
 
         try {
             $result = $this->returnBookUseCase->execute($dto);
-            // Оборачиваем результат в ресурс ReturnBookResource
+
             return new ReturnBookResource((object)$result);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);

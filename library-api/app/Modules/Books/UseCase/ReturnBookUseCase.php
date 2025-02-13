@@ -19,13 +19,13 @@ class ReturnBookUseCase
             throw new Exception("Запись о заимствовании не найдена или книга уже возвращена");
         }
 
-        // Помечаем запись как возвращённую
+
         $this->repository->markAsReturned($borrowRecord);
 
         // Получаем книгу
         $book = $this->repository->getBookById($dto->bookId);
         if ($book) {
-            // Увеличиваем количество доступных копий
+
             $this->repository->incrementAvailableCopies($book);
         }
 

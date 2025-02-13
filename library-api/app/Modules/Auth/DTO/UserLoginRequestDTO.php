@@ -1,5 +1,5 @@
 <?php
-// app/Modules/Auth/DTO/UserLoginRequestDTO.php
+
 namespace App\Modules\Auth\DTO;
 
 readonly class UserLoginRequestDTO

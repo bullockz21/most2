@@ -17,14 +17,11 @@ class LibraryAllBooksController extends Controller
         $this->getAllBooksUseCase = $useCase;
     }
 
-    // Этот метод invokable вызывается при GET /api/v1/librarian/books
+
     public function __invoke(Request $request)
     {
-        // Создаем DTO (без дополнительных параметров)
         $dto = new GetAllBooksRequestDTO();
-        // Выполняем UseCase для получения всех книг
         $books = $this->getAllBooksUseCase->execute($dto);
-        // Возвращаем коллекцию книг, отформатированную через BookResource
         return BookResource::collection($books);
     }
 }

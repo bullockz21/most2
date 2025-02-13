@@ -19,7 +19,6 @@ class UpdateBookController
         $this->updateBookUseCase = $useCase;
     }
 
-    // Этот контроллер invokable вызывается при PUT /api/v1/librarian/books/{book}
     public function __invoke(UpdateBookRequest $request, $book)
     {
         $dto = new UpdateBookRequestDTO(

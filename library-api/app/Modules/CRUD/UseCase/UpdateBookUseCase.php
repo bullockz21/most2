@@ -14,7 +14,6 @@ class UpdateBookUseCase
 
     public function execute(int $bookId, UpdateBookRequestDTO $dto): Book
     {
-        // Преобразуем DTO в массив, исключая null значения
         $data = array_filter([
             'title'            => $dto->title,
             'author'           => $dto->author,

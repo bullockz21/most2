@@ -14,7 +14,7 @@ class CreateBookUseCase
 
     public function execute(CreateBookRequestDTO $dto): Book
     {
-        // Преобразуем DTO в массив для передачи в репозиторий
+
         $data = [
             'title'            => $dto->title,
             'author'           => $dto->author,

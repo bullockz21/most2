@@ -17,7 +17,6 @@ class LibraryController extends Controller
         $this->getAvailableBooksUseCase = $useCase;
     }
 
-    // Этот метод будет вызываться при обращении к контроллеру напрямую
     public function __invoke(Request $request)
     {
         $dto = new GetAvailableBooksRequestDTO();

@@ -17,7 +17,6 @@ class DeleteBookController extends Controller
         $this->deleteBookUseCase = $useCase;
     }
 
-    // Этот контроллер invokable вызывается при DELETE /api/v1/librarian/books/{book}
     public function __invoke(DeleteBookRequest $request, $book)
     {
         $dto = new DeleteBookRequestDTO((int)$book);

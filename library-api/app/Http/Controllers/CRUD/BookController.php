@@ -13,7 +13,6 @@ use App\Http\Requests\CRUD\CreateBookRequest;
 
 class BookController extends Controller
 {
-
     private CreateBookUseCase $createBookUseCase;
 
     public function __construct(CreateBookUseCase $useCase)
@@ -21,7 +20,6 @@ class BookController extends Controller
         $this->createBookUseCase = $useCase;
     }
 
-    // Этот метод invokable будет вызван при POST /api/v1/librarian/books
     public function __invoke(CreateBookRequest $request)
     {
         $dto = new CreateBookRequestDTO(

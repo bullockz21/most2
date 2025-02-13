@@ -8,7 +8,6 @@ class CreateBookRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // Здесь можно проверить роль: библиотекарь или другой способ аутентификации
         return true;
     }
 

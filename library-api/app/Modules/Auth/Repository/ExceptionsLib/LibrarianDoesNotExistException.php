@@ -6,5 +6,5 @@ use Exception;
 
 class LibrarianDoesNotExistException extends Exception
 {
-    // Дополнительная логика, если требуется
+
 }

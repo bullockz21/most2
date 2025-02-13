@@ -16,15 +16,13 @@ class LibrarianLogoutController extends Controller
         $this->presenter = $presenter;
     }
 
-    /**
-     * Метод __invoke будет вызываться, когда пользователь делает запрос на выход.
-     */
+
     public function __invoke(Request $request)
     {
         try {
-            // Получаем текущий JWT-токен из запроса
+
             $token = JWTAuth::getToken();
-            // Инвалидируем токен, делая его недействительным
+
             JWTAuth::invalidate($token);
 
             return $this->presenter->present(['message' => 'Вы успешно вышли из системы']);

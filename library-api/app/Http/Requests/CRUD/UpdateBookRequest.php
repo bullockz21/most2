@@ -7,7 +7,6 @@ class UpdateBookRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // Дополнительная авторизация может обрабатываться middleware
         return true;
     }
 

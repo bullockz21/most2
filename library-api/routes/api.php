@@ -58,25 +58,7 @@ Route::prefix('v1')->group(function () {
         Route::delete('/books/{book}', DeleteBookController::class);
 
     });
-//    Route::middleware('jwt.auth')->group(function () {
-//
-//        // Маршруты для пользователей: просмотр книг, брать и сдавать книги
-//        Route::prefix('user')->group(function () {
-//            Route::get('/books', [LibraryController::class, 'index']);
-//            Route::post('/books/{book}/borrow', [LibraryController::class, 'borrow']);
-//            Route::post('/books/{book}/return', [LibraryController::class, 'returnBook']);
-//        });
-//
-//        // Маршруты для библиотекарей: CRUD операций с книгами
-//        Route::prefix('librarian')->group(function () {
-//            Route::post('/books', [BookController::class, 'store']);
-//            Route::get('/books', [BookController::class, 'index']);
-//            Route::put('/books/{book}', [BookController::class, 'update']);
-//            Route::delete('/books/{book}', [BookController::class, 'destroy']);
-//        });
-//
-//        // Можно добавить маршрут выхода (logout) здесь, если нужно
-//    });
+
 });
 //{
 //    "email": "user@example.com",

@@ -11,12 +11,6 @@ class DeleteBookUseCase
         private DeleteBookRepository $repository
     ) {}
 
-    /**
-     * Выполняет бизнес-логику удаления книги.
-     *
-     * @param DeleteBookRequestDTO $dto
-     * @return array
-     */
     public function execute(DeleteBookRequestDTO $dto): array
     {
         $this->repository->delete($dto->bookId);

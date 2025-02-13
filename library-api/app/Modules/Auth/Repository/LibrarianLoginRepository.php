@@ -13,7 +13,6 @@ class LibrarianLoginRepository
 {
     public function make(LibrarianLoginRequestDTO $dto): array
     {
-        // Поиск библиотекаря по email
         $librarian = Librarian::where('email', $dto->email)->first();
 
         if (!$librarian) {
@@ -24,7 +23,6 @@ class LibrarianLoginRepository
             throw new PasswordDoesntMatchException("Неверный пароль.");
         }
 
-        // Генерация JWT токена для библиотекаря
         $token = JWTAuth::fromUser($librarian);
 
         return ['token' => $token];
