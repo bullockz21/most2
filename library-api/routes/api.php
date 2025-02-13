@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\UserRegisterController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\Auth\LibrarianLoginController;
+use App\Http\Controllers\Auth\LibrarianLogoutController;
 
 Route::prefix('v1')->group(function () {
 
@@ -29,6 +30,7 @@ Route::prefix('v1')->group(function () {
      */
     Route::prefix('librarian/auth')->group(function () {
         Route::post('/login', LibrarianLoginController::class);
+        Route::post('/logout', LibrarianLogoutController::class);
 
     });
 
